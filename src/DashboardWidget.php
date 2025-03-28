@@ -98,7 +98,7 @@ class DashboardWidget {
 		return <<<CSS
 			#dashboard-widgets .admin-tools-dashboard-widget h3 {
 				font-size: 1.5em; /* Adjust the font size for section titles */
-				margin-bottom: 10px; /* Add some space below the title */
+				margin: .5em 0; /* Add some space below the title */
 				font-weight: bold; /* Make the title bold */
 
 			}
