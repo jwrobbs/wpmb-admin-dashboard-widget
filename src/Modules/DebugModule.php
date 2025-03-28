@@ -53,7 +53,7 @@ class DebugModule extends AbstractModule {
 
 		// Create Section.
 		$section = new Section(
-			title: 'Debug Data',
+			title: 'Debug Log Status',
 			content: $content, // Content will be generated in the render_section method.
 			css_id: 'debug-data-section' // CSS ID for the section.
 		);
