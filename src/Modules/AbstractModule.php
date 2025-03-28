@@ -35,8 +35,8 @@ abstract class AbstractModule {
 	 */
 	final public static function init() {
 		add_filter( 'wp_admin_tools_sections', array( static::class, 'generate_section' ) );
-
 		add_filter( 'wp_admin_tools_custom_css', array( static::class, 'add_css' ) );
+
 		static::extend_init();
 	}
 
