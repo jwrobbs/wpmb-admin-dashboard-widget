@@ -1,6 +1,4 @@
 (function ($) {
-	console.log("Cleanup History script loaded.");
-	console.log(CleanHistoryAjax);
 	$(document).ready(function () {
 		$(".wpmb-clean-simple-history").on("click", function () {
 			const $btn = $(this);
