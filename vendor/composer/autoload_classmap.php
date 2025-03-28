@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'WPMB_Admin_Metabox_Common\\Hooks' => $baseDir . '/common/Hooks.php',
+    'WPMB_Admin_Dashboard_Widget\\DashboardWidget' => $baseDir . '/src/DashboardWidget.php',
+    'WPMB_Admin_Dashboard_Widget_Common\\Hooks' => $baseDir . '/common/Hooks.php',
 );

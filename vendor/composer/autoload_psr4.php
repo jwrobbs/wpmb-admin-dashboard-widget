@@ -6,6 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WPMB_Admin_Metabox_Common\\' => array($baseDir . '/common'),
-    'WPMB_Admin_Metabox\\' => array($baseDir . '/src'),
+    'WPMB_Admin_Dashboard_Widget_Common\\' => array($baseDir . '/common'),
+    'WPMB_Admin_Dashboard_Widget\\' => array($baseDir . '/src'),
 );

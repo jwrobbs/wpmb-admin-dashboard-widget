@@ -9,17 +9,17 @@ class ComposerStaticInitdbe5e926f3c8646672304097224d18db
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
-            'WPMB_Admin_Metabox_Common\\' => 26,
-            'WPMB_Admin_Metabox\\' => 19,
+            'WPMB_Admin_Dashboard_Widget_Common\\' => 35,
+            'WPMB_Admin_Dashboard_Widget\\' => 28,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPMB_Admin_Metabox_Common\\' => 
+        'WPMB_Admin_Dashboard_Widget_Common\\' => 
         array (
             0 => __DIR__ . '/../..' . '/common',
         ),
-        'WPMB_Admin_Metabox\\' => 
+        'WPMB_Admin_Dashboard_Widget\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -27,7 +27,8 @@ class ComposerStaticInitdbe5e926f3c8646672304097224d18db
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'WPMB_Admin_Metabox_Common\\Hooks' => __DIR__ . '/../..' . '/common/Hooks.php',
+        'WPMB_Admin_Dashboard_Widget\\DashboardWidget' => __DIR__ . '/../..' . '/src/DashboardWidget.php',
+        'WPMB_Admin_Dashboard_Widget_Common\\Hooks' => __DIR__ . '/../..' . '/common/Hooks.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -21,6 +21,7 @@ if ( ! is_admin() ) {
 	return;
 }
 
+require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/common/constants.php';
 
 \WPMB_Admin_Dashboard_Widget_Common\Hooks::init();
