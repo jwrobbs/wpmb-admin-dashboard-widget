@@ -27,8 +27,14 @@ class ComposerStaticInitdbe5e926f3c8646672304097224d18db
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'WPMB_Admin_Dashboard_Widget\\Ajax\\CleanSimpleHistory' => __DIR__ . '/../..' . '/src/Ajax/CleanSimpleHistory.php',
+        'WPMB_Admin_Dashboard_Widget\\Ajax\\ToggleDebug' => __DIR__ . '/../..' . '/src/Ajax/ToggleDebug.php',
         'WPMB_Admin_Dashboard_Widget\\DashboardWidget' => __DIR__ . '/../..' . '/src/DashboardWidget.php',
-        'WPMB_Admin_Dashboard_Widget\\Modules\\EnvironmentalData' => __DIR__ . '/../..' . '/src/Modules/EnvironmentalData.php',
+        'WPMB_Admin_Dashboard_Widget\\Modules\\AbstractModule' => __DIR__ . '/../..' . '/src/Modules/AbstractModule.php',
+        'WPMB_Admin_Dashboard_Widget\\Modules\\DebugModule' => __DIR__ . '/../..' . '/src/Modules/DebugModule.php',
+        'WPMB_Admin_Dashboard_Widget\\Modules\\EnvironmentalModule' => __DIR__ . '/../..' . '/src/Modules/EnvironmentalModule.php',
+        'WPMB_Admin_Dashboard_Widget\\Modules\\Section' => __DIR__ . '/../..' . '/src/Modules/Section.php',
+        'WPMB_Admin_Dashboard_Widget\\Modules\\SimpleHistoryModule' => __DIR__ . '/../..' . '/src/Modules/SimpleHistoryModule.php',
         'WPMB_Admin_Dashboard_Widget_Common\\Hooks' => __DIR__ . '/../..' . '/common/Hooks.php',
     );
 

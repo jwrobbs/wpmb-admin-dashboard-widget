@@ -84,7 +84,7 @@ class DashboardWidget {
 		// Output the custom CSS to the admin head.
 		if ( ! empty( $custom_css ) ) {
 			// Ensure the CSS is properly escaped.
-			$custom_css = "<style type='text/css'>\n" . esc_html( $custom_css ) . "\n</style>";
+			$custom_css = "<style type='text/css'>\n" . $custom_css . "\n</style>";
 			echo $custom_css; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
@@ -96,11 +96,15 @@ class DashboardWidget {
 	 */
 	public static function get_main_css() {
 		return <<<CSS
-			#dashboard-widgets .admin-tools-dashboard-widget h3 {
+			#dashboard-widgets .admin-tools-dashboard-widget {
+				h3 {
 				font-size: 1.5em; /* Adjust the font size for section titles */
 				margin: .5em 0; /* Add some space below the title */
 				font-weight: bold; /* Make the title bold */
-
+				}
+				p {
+					margin: 0;
+				}
 			}
 		CSS;
 	}

@@ -7,7 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'WPMB_Admin_Dashboard_Widget\\Ajax\\CleanSimpleHistory' => $baseDir . '/src/Ajax/CleanSimpleHistory.php',
+    'WPMB_Admin_Dashboard_Widget\\Ajax\\ToggleDebug' => $baseDir . '/src/Ajax/ToggleDebug.php',
     'WPMB_Admin_Dashboard_Widget\\DashboardWidget' => $baseDir . '/src/DashboardWidget.php',
-    'WPMB_Admin_Dashboard_Widget\\Modules\\EnvironmentalData' => $baseDir . '/src/Modules/EnvironmentalData.php',
+    'WPMB_Admin_Dashboard_Widget\\Modules\\AbstractModule' => $baseDir . '/src/Modules/AbstractModule.php',
+    'WPMB_Admin_Dashboard_Widget\\Modules\\DebugModule' => $baseDir . '/src/Modules/DebugModule.php',
+    'WPMB_Admin_Dashboard_Widget\\Modules\\EnvironmentalModule' => $baseDir . '/src/Modules/EnvironmentalModule.php',
+    'WPMB_Admin_Dashboard_Widget\\Modules\\Section' => $baseDir . '/src/Modules/Section.php',
+    'WPMB_Admin_Dashboard_Widget\\Modules\\SimpleHistoryModule' => $baseDir . '/src/Modules/SimpleHistoryModule.php',
     'WPMB_Admin_Dashboard_Widget_Common\\Hooks' => $baseDir . '/common/Hooks.php',
 );
