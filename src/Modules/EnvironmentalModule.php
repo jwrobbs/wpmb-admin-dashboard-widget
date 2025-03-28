@@ -88,19 +88,24 @@ class EnvironmentalModule extends AbstractModule {
 	 * @return array
 	 */
 	public static function get_environmental_data() {
+		$server_info = $GLOBALS['wpdb']->get_var( 'SELECT VERSION()' );
+		if ( stripos( $server_info, 'mariadb' ) !== false ) {
+			$type = 'MariaDB';
+		} else {
+			$type = 'MySQL';
+		}
+
 		$environmental_data = array(
 			'PHP Version'            => phpversion(),
 			'WordPress Version'      => get_bloginfo( 'version' ),
 			'Server Software'        => $_SERVER['SERVER_SOFTWARE'], // phpcs:ignore
-			'MySQL Version'          => $GLOBALS['wpdb']->db_version(),
+			"$type Version"          => $GLOBALS['wpdb']->db_version(),
 			'PHP Memory Limit'       => ini_get( 'memory_limit' ),
 			'PHP Max Execution Time' => ini_get( 'max_execution_time' ),
 			'PHP Max Input Time'     => ini_get( 'max_input_time' ),
 			'PHP Post Max Size'      => ini_get( 'post_max_size' ),
 			'PHP Upload Max Size'    => ini_get( 'upload_max_filesize' ),
 			'PHP Max File Uploads'   => ini_get( 'max_file_uploads' ),
-			'PHP Max Input Vars'     => ini_get( 'max_input_vars' ),
-			'PHP Display Errors'     => ini_get( 'display_errors' ),
 		);
 
 		return $environmental_data;
