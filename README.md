@@ -1,3 +1,5 @@
 # wpmb-admin-dashboard-widget
 
-Custom conditions for Bricks (WP) elements
+This is a dashboard widget system.
+
+DashboardWidget gets the ball rolling and uses the modules to populate the widget.
