@@ -7,6 +7,8 @@
 
 namespace WPMB_Admin_Dashboard_Widget_Common;
 
+use WPMB_Admin_Dashboard_Widget\DashboardWidget;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -17,6 +19,6 @@ class Hooks {
 	 * Initialize the hooks
 	 */
 	public static function init() {
-		$x = 1;
+		DashboardWidget::init();
 	}
 }

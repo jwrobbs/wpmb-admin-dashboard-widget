@@ -23,7 +23,7 @@ class DashboardWidget {
 	/**
 	 * Add the dashboard widget
 	 */
-	public function add_dashboard_widget() {
+	public static function add_dashboard_widget() {
 		wp_add_dashboard_widget(
 			'wp_admin_tools',
 			'Admin Tools',
