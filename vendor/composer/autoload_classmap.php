@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'WPMB_Admin_Dashboard_Widget\\DashboardWidget' => $baseDir . '/src/DashboardWidget.php',
+    'WPMB_Admin_Dashboard_Widget\\Modules\\EnvironmentalData' => $baseDir . '/src/Modules/EnvironmentalData.php',
     'WPMB_Admin_Dashboard_Widget_Common\\Hooks' => $baseDir . '/common/Hooks.php',
 );

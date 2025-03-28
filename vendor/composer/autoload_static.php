@@ -28,6 +28,7 @@ class ComposerStaticInitdbe5e926f3c8646672304097224d18db
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'WPMB_Admin_Dashboard_Widget\\DashboardWidget' => __DIR__ . '/../..' . '/src/DashboardWidget.php',
+        'WPMB_Admin_Dashboard_Widget\\Modules\\EnvironmentalData' => __DIR__ . '/../..' . '/src/Modules/EnvironmentalData.php',
         'WPMB_Admin_Dashboard_Widget_Common\\Hooks' => __DIR__ . '/../..' . '/common/Hooks.php',
     );
 

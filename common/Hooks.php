@@ -8,6 +8,7 @@
 namespace WPMB_Admin_Dashboard_Widget_Common;
 
 use WPMB_Admin_Dashboard_Widget\DashboardWidget;
+use WPMB_Admin_Dashboard_Widget\Modules\EnvironmentalData;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -20,5 +21,7 @@ class Hooks {
 	 */
 	public static function init() {
 		DashboardWidget::init();
+
+		EnvironmentalData::init();
 	}
 }
