@@ -1,0 +1,18 @@
+{
+	"name": "jwrobbs/wpmb-admin-dashboard-widget",
+	"description": "Adds custom widget to dashboard for devs and admins.",
+	"type": "wordpress-plugin",
+	"license": "The Unlicence",
+	"autoload": {
+		"psr-4": {
+			"WPMB_Admin_Dashboard_Widget\\": "src/",
+			"WPMB_Admin_Dashboard_Widget_Common\\": "common/"
+		}
+	},
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"php": ">=8.0"
+	}
+}
