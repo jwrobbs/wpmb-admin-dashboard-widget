@@ -15,7 +15,15 @@ defined( 'ABSPATH' ) || exit;
  * Debug Module Class
  */
 class DebugModule extends AbstractModule {
-
+	/**
+	 * Extend Init
+	 *
+	 * This method can be overridden in the child class to perform additional initialization
+	 * tasks specific to that module.
+	 */
+	protected static function extend_init() {
+		add_action( 'admin_enqueue_scripts', array( static::class, 'enqueue_js' ) );
+	}
 
 	/**
 	 * Generate the debug data section
@@ -47,9 +55,13 @@ class DebugModule extends AbstractModule {
 		$content .= '</div>';
 
 		// Add button.
+		$content .= '<div class="buttons">';
 		if ( self::is_wp_config_writable() ) {
 			$content .= self::get_button( $debug_data );
 		}
+
+		$content .= self::get_file_text();
+		$content .= '</div>';
 
 		// Create Section.
 		$section = new Section(
@@ -63,6 +75,28 @@ class DebugModule extends AbstractModule {
 	}
 
 	/**
+	 * Enqueue JavaScript
+	 *
+	 * This method is used to enqueue JavaScript files for the module.
+	 */
+	public static function enqueue_js() {
+		wp_enqueue_script(
+			'toggle-debug',
+			\WPMB_ADMIN_DASHBOARD_WIDGET_URL . 'assets/toggle-debug.js',
+			array( 'jquery' ),
+			filemtime( \WPMB_ADMIN_DASHBOARD_WIDGET_DIR . '/assets/toggle-debug.js' ),
+			true
+		);
+		wp_localize_script(
+			'toggle-debug',
+			'DebugToggleAjax',
+			array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'action'   => 'wpmb_toggle_debug',
+			)
+		);
+	}
+	/**
 	 * Add CSS
 	 *
 	 * @param string $widget_css The existing custom CSS from other modules or sections.
@@ -73,6 +107,7 @@ class DebugModule extends AbstractModule {
 			#debug-data-section .admin-tools-dashboard-widget__content {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
+				grid-gap: 10px;
 
 				.debug-data-section__statuses {
 					display: grid;
@@ -88,6 +123,10 @@ class DebugModule extends AbstractModule {
 					font-size: .8rem;
 					line-height: 1.2;
 					margin: 0 0 .5em;
+				}
+				.buttons button {
+					width: 100%;
+					margin: .25rem 0;
 				}
 			}
 			
@@ -183,36 +222,33 @@ class DebugModule extends AbstractModule {
 	}
 
 	/**
-	 * Extend Init
+	 * Get file text
 	 *
-	 * This method can be overridden in the child class to perform additional initialization
-	 * tasks specific to that module.
+	 * @return string
 	 */
-	protected static function extend_init() {
+	protected static function get_file_text() {
+		$log_path      = WP_CONTENT_DIR . '/debug.log';
+		$file_size     = '';
+		$delete_button = '';
 
-		add_action( 'admin_enqueue_scripts', array( static::class, 'enqueue_js' ) );
-	}
+		global $wp_filesystem;
+		WP_Filesystem();
 
-	/**
-	 * Enqueue JavaScript
-	 *
-	 * This method is used to enqueue JavaScript files for the module.
-	 */
-	public static function enqueue_js() {
-		wp_enqueue_script(
-			'toggle-debug',
-			\WPMB_ADMIN_DASHBOARD_WIDGET_URL . 'assets/toggle-debug.js',
-			array( 'jquery' ),
-			filemtime( \WPMB_ADMIN_DASHBOARD_WIDGET_DIR . '/assets/toggle-debug.js' ),
-			true
+		if ( ! $wp_filesystem->exists( $log_path ) ) {
+			return '<p>debug.log not found.</p>';
+		}
+
+		$size_bytes = $wp_filesystem->size( $log_path );
+		$file_size  = size_format( $size_bytes, 2 );
+
+		$nonce = wp_create_nonce( 'delete_debug_log' );
+
+		$delete_button = sprintf(
+			'<button id="delete-debug-log" class="button button-secondary" data-nonce="%s">Delete debug.log (%s)</button>',
+			$nonce,
+			esc_html( $file_size )
 		);
-		wp_localize_script(
-			'toggle-debug',
-			'DebugToggleAjax',
-			array(
-				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'action'   => 'wpmb_toggle_debug',
-			)
-		);
+
+		return $delete_button;
 	}
 }

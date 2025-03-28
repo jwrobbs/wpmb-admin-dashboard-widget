@@ -39,5 +39,31 @@
 				$btn.prop("disabled", false);
 			});
 		});
+
+		$("#delete-debug-log").on("click", function () {
+			const $btn = $(this);
+			const nonce = $btn.data("nonce");
+			const $msg = $("#delete-debug-msg");
+
+			$btn.prop("disabled", true);
+			$msg.text("Deleting...");
+
+			$.post(
+				DebugToggleAjax.ajax_url,
+				{
+					action: "wpmb_delete_debug_log",
+					_wpnonce: nonce,
+				},
+				function (response) {
+					if (response.success) {
+						$msg.text("Deleted!");
+						$btn.remove();
+					} else {
+						$msg.text("Error: " + response.data);
+						$btn.prop("disabled", false);
+					}
+				}
+			);
+		});
 	});
 })(jQuery);

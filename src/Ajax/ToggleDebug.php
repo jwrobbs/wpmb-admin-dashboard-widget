@@ -21,6 +21,7 @@ class ToggleDebug {
 	 */
 	public static function init() {
 		add_action( 'wp_ajax_wpmb_toggle_debug', array( self::class, 'handle' ) );
+		add_action( 'wp_ajax_wpmb_delete_debug_log', array( static::class, 'delete_log' ) );
 	}
 	/**
 	 * Handle the AJAX request to toggle WP_DEBUG and WP_DEBUG_LOG.
@@ -134,5 +135,39 @@ class ToggleDebug {
 
 		// Fallback: append to end.
 		return $content . "\n\n" . $define_line . "\n";
+	}
+
+	/**
+	 * Delete the debug log file.
+	 *
+	 * This function handles the AJAX request to delete the debug log file (debug.log).
+	 *
+	 * @return void
+	 */
+	public static function delete_log() {
+		check_ajax_referer( 'delete_debug_log' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Unauthorized' );
+		}
+
+		if ( ! function_exists( 'request_filesystem_credentials' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
+
+		global $wp_filesystem;
+		WP_Filesystem();
+
+		$log_path = WP_CONTENT_DIR . '/debug.log';
+
+		if ( ! $wp_filesystem->exists( $log_path ) ) {
+			wp_send_json_error( 'File does not exist' );
+		}
+
+		if ( $wp_filesystem->delete( $log_path ) ) {
+			wp_send_json_success();
+		}
+
+		wp_send_json_error( 'Failed to delete' );
 	}
 }
